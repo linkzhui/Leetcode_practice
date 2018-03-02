@@ -13,54 +13,37 @@ public class Solution {
     }
     public boolean canPartitionKSubsets(int[] nums, int k) {
         int sum = 0;
-        for(Integer element:nums)
-        {
-            sum+=element;
+        for (int num : nums) {
+            sum += num;
         }
-
-        if(nums==null||nums.length==0||k<=0||sum%k!=0)
-        {
+        if (sum % k != 0) {
             return false;
         }
-        sum/=k;
+        boolean[] visited = new boolean[nums.length];
         Arrays.sort(nums);
-        int start = 0;
-        int end = nums.length-1;
-        int count=0;
-        return helper(nums,k,sum,0,0,nums.length-1);
+        return canPartition(nums, visited, k, 0, 0, sum / k);
     }
 
-    private boolean helper(int[] nums, int k, int sum, int cur_sum, int start, int end)
-    {
-        if(k==0&&start>end)
-        {
+    private boolean canPartition(int[] nums, boolean[] visited, int k, int start, int curSum, int target) {
+        if (k == 1) {
             return true;
         }
-
-        if(cur_sum>sum||start>end||k<0)
-        {
-            return false;
+        if (curSum == target) {
+            return canPartition(nums, visited, k - 1, 0, 0, target);
         }
-
-        if(cur_sum==sum)
-        {
-            k--;
-            cur_sum=0;
-            if(helper(nums,k,sum,cur_sum,start,end)){
+        for (int i = start; i < nums.length; i++) {
+            if (visited[i]) {
+                continue;
+            }
+            if (curSum + nums[i] > target) {
+                break;
+            }
+            visited[i] = true;
+            if (canPartition(nums, visited, k, i + 1, curSum + nums[i], target)) {
                 return true;
             }
+            visited[i] = false;
         }
-
-        if(helper(nums,k,sum,cur_sum+nums[start],start+1,end)){
-            return true;
-        }
-
-        if(helper(nums,k,sum,cur_sum+nums[end],start,end-1))
-        {
-            return true;
-        }
-
         return false;
-
     }
 }
