@@ -17,6 +17,10 @@ import java.util.List;
 //        [3,1,2],
 //        [3,2,1]
 //        ]
+
+
+//enumerate all the permutations in a generative way, the idea is that, at each position, I specify the element by swapping the values with larger index,
+//the value at position 0 can be swap with position 1,2 until reach the last element in the string， after each swap, I will do recursion for the rest of the string
 public class Solution {
     public static void main(String[] args)
     {
@@ -47,7 +51,7 @@ public class Solution {
         for(int i = cur_index;i<nums.length;i++)
         {
             swap(nums,cur_index,i);
-            helper(nums,cur_index+1,result);
+            helper(nums,cur_index+1,result);  //注意，这里是cur_index
             swap(nums,cur_index,i);
         }
     }

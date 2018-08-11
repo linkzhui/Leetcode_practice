@@ -26,7 +26,7 @@ public class Solution {
         Solution sol = new Solution();
         sol.permutation_blocks(3);
     }
-    void permutation_blocks(int n)
+    private void permutation_blocks(int n)
     {
         if(n<=0)
         {

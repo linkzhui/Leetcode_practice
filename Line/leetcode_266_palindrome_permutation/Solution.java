@@ -8,22 +8,26 @@ package Google.Line.leetcode_266_palindrome_permutation;
 
 import java.util.HashSet;
 
-//解法思路：如果能permutatation之后组成回文，那就说明所有的character对对碰之后，hashset的size会少于等于1
+
 public class Solution {
     public boolean canPermutePalindrome(String s) {
         if(s==null || s.length()==0)
         {
             return false;
         }
-        HashSet<Character> set = new HashSet<>();
-        for(int i = 0;i<s.length();i++)
+
+        int count = 0;//用count来记录number of unpair element
+        int[] map = new int[256];
+        for(Character element:s.toCharArray())
         {
-            char element = s.charAt(i);
-            if(set.add(element)==false)
+            if(++map[element]%2==1)
             {
-                set.remove(element);
+                count++;
+            }
+            else{
+                count--;
             }
         }
-        return set.size()<=1;
+        return (count <= 1);
     }
 }
