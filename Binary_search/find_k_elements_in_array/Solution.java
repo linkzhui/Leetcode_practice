@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
+
 public class Solution {
     public static void main(String[] args)
     {
@@ -12,6 +14,8 @@ public class Solution {
         int[] array = {1,2,2,3,3,4,4,5,6,7,8};
         System.out.println(sol.k_element(array,7,4).toString());
     }
+
+    //Time = log (n) + k
     List<Integer> k_element(int[] array, int target, int k)
     {
         List<Integer> result = new ArrayList<>();
@@ -64,4 +68,6 @@ public class Solution {
         }
         return result;
     }
+
+
 }
