@@ -1,7 +1,17 @@
 package Google.GoogleOA.Leetcode_159_Longest_Substring_with_At_Most_Two_Distinct_Characters;
 
+
+//space: O(1)
+//time complex: O(2n), we only go through the whole array two times
+
 public class Solution {
-    public int lengthOfLongestSubstringTwoDistinct(String s) {
+    public static void main(String[] args)
+    {
+        Solution solution = new Solution();
+        String array = "12321";
+        System.out.println(solution.lengthOfLongestSubstringTwoDistinct(array));
+    }
+    private int lengthOfLongestSubstringTwoDistinct(String s) {
         if(s == null || s.length() == 0)
         {
             return  0;

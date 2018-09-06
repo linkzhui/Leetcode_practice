@@ -23,29 +23,21 @@ public class Solution {
     }
     public ListNode insert_node(ListNode head, int target){
         ListNode new_node = new ListNode(target);
-        if(head == null || target<head.value)
-        {
+        if (head == null) {
+            return new_node;
+        }
+        if (head.value <= target) {
             new_node.next = head;
             return new_node;
         }
+
         ListNode cur = head;
-        ListNode prev = head;
-        while(cur.value<=target && cur.next!=null)
-        {
-            prev = cur;
-            cur=cur.next;
+        while(cur.next != null && cur.next.value < target) {
+            cur = cur.next;
         }
 
-        if(cur.next==null && cur.value<=target)
-        {
-            cur.next = new_node;
-
-        }
-        else{
-            //这里别忘记prev了
-            prev.next = new_node;
-            new_node.next = cur;
-        }
+        new_node.next = cur.next;
+        cur.next = new_node;
         return head;
 
     }
