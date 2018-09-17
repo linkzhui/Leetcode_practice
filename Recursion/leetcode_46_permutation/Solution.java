@@ -25,10 +25,10 @@ public class Solution {
     public static void main(String[] args)
     {
         Solution sol = new Solution();
-        int[] array = {1,2,3};
+        Integer[] array = {1,2,3};
         System.out.println(Arrays.toString(sol.permute(array).toArray()));
     }
-    public List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permute(Integer[] nums) {
         List<List<Integer>> result = new LinkedList<>();
         if(nums==null || nums.length == 0)
         {
@@ -38,14 +38,11 @@ public class Solution {
         return result;
 
     }
-    private void helper(int[] nums, int cur_index,List<List<Integer>> result)
+    private void helper(Integer[] nums, int cur_index,List<List<Integer>> result)
     {
         if(cur_index==nums.length)
         {
-            ArrayList<Integer> part_result = new ArrayList<>();
-            for(int element:nums){
-                part_result.add(element);
-            }
+            ArrayList<Integer> part_result = new ArrayList<>(Arrays.asList(nums));
             result.add(part_result);
         }
         for(int i = cur_index;i<nums.length;i++)
@@ -55,7 +52,7 @@ public class Solution {
             swap(nums,cur_index,i);
         }
     }
-    private void swap(int[] nums, int left, int right)
+    private void swap(Integer[] nums, int left, int right)
     {
         int temp = nums[left];
         nums[left] = nums[right];

@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+
+//1. what does it store on each level?
+//          n levels, each level represents we consider 1 position
+//how many different states should we try to put on this level?
+//          position 0: n branches, position 1: n-1 branches
 public class Solution {
 
     public static void main(String[] args)
@@ -70,7 +75,7 @@ public class Solution {
         {
             swap(s,level,i);
             char[] sub_array = Arrays.copyOf(s,level+1);
-            if(set.contains(sub_array)==false)
+            if(!set.contains(sub_array))
             {
                 set.add(sub_array);
                 helper(s,level+1,result,set);
