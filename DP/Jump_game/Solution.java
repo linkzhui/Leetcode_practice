@@ -6,10 +6,36 @@ public class Solution {
     public static void main(String[] args)
     {
         Solution sol = new Solution();
-        int[] array = {2,0,0,1,1,4};
-        System.out.println(sol.jump_game(array));
+        int[] array = {2,0,3,1,1,4};
+        System.out.println(sol.jump_game_2(array));
     }
-    boolean jump_game(int[] array)
+
+
+
+    //Greedy solution: time complexity: O(n)
+    //                 space complexity: O(n)
+    //bottom up greedy algorithm
+    //Iterating right-to-left, for each position we check if there is a potential jump that reaches a GOOD index (currPosition + nums[currPosition] >= leftmostGoodIndex).
+    boolean jump_game_2(int[] array) {
+        if(array == null || array.length < 2) {
+            return true;
+        }
+        int length = array.length;
+        int leftMost = length - 1;
+        for(int i = length - 2; i>=0; i--) {
+            if(array[i]+i>=leftMost) {
+                leftMost = i;
+            }
+        }
+        return leftMost == 0;
+    }
+
+
+
+
+    //DP solution: time complexity: O(n^2)
+    //             space complexity: O(n)
+    boolean jump_game_1(int[] array)
     {
         boolean[] game = new boolean[array.length];
         game[array.length-1] = true;
@@ -24,6 +50,7 @@ public class Solution {
                 }
             }
         }
-        return (game[0]==true? true:false);
+        return game[0];
     }
+
 }

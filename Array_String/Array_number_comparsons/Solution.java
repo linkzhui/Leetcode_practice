@@ -1,4 +1,4 @@
-package Google.Line.Array_number_comparsons;
+package Google.Array_String.Array_number_comparsons;
 
 import org.junit.Test;
 

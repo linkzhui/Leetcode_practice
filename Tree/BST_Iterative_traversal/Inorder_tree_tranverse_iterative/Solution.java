@@ -25,7 +25,6 @@ public class Solution {
             return null;
         }
         TreeNode cur = root;
-        stack.offerLast(cur);
         while(cur!=null || !stack.isEmpty())
         {
             if(cur != null)

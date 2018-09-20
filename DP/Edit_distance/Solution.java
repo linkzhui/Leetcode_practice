@@ -13,8 +13,8 @@ import java.util.Arrays;
 //case 1: if(words1[i] == word2[j]) we don't need operation dp[i][j] = dp[i-1][j-1];
 //case 2: if(words1[i]!=word2[j])
 //      a: replace 1+dp[i-1][j-1]
-//      b: delete  1+dp[i-1][j-1]
-//      c: insert  1+dp[i][j-1]
+//      b: delete  1+dp[i-1][j] and 1+dp[i][j-1]
+//      c: insert  1+dp[i-1][j] and 1+dp[i][j-1]
 //      min (case a, case b, case c);
 public class Solution {
     public static void main(String[] args)

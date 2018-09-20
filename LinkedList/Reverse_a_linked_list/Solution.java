@@ -32,10 +32,9 @@ public class Solution {
         }
         ListNode prev = null;
         ListNode cur = head;
-        ListNode next;
         while(cur!=null)
         {
-            next = cur.next;
+            ListNode next = cur.next;
             cur.next = prev;
             prev = cur;
             cur = next;
@@ -43,15 +42,14 @@ public class Solution {
         return prev;
     }
 
-    ListNode recursive_way(ListNode head)
+    ListNode recursive_way(ListNode cur)
     {
-        if(head.next==null)
+        if(cur.next==null)
         {
-            return head;
+            return cur;
         }
-        ListNode cur = head;
-        ListNode next = head.next;
-        head = recursive_way(head.next);
+        ListNode next = cur.next;
+        ListNode head = recursive_way(cur.next);
         next.next = cur;
         cur.next = null;
         return head;

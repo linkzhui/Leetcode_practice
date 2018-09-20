@@ -1,4 +1,4 @@
-package Google.Line.char_removal;
+package Google.Array_String.char_removal;
 
 import java.util.Arrays;
 

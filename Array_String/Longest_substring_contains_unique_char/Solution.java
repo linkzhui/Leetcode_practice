@@ -1,4 +1,4 @@
-package Google.Line.Longest_substring_contains_unique_char;
+package Google.Array_String.Longest_substring_contains_unique_char;
 
 public class Solution {
     public static void main(String[] args)
@@ -30,7 +30,7 @@ public class Solution {
             }
             if(longest_length<i-temp_index+1)
             {
-                longest_length = Math.max(longest_length,i-temp_index+1);
+                longest_length = i-temp_index+1;
                 start_index = temp_index;
             }
 

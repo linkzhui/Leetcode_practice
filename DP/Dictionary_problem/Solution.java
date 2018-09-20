@@ -15,7 +15,7 @@ public class Solution {
     {
         String[] dict = {"bob","cat","robsad","rob","sad","a"};
         Solution sol = new Solution();
-        System.out.println(sol.dict_3(dict,"a"));
+        System.out.println(sol.dict_3(dict,"asadrob"));
 
     }
     boolean dict_1(String[] dict, String s)
@@ -79,13 +79,13 @@ public class Solution {
 
     boolean dict_3(String[] dict, String s)
     {
-        if(s==null || s.length()==0)
+        if (s==null || s.length()==0)
         {
             return false;
         }
 
         Set<String> set = new HashSet<>();
-        for(int i = 0;i<dict.length;i++)
+        for (int i = 0;i<dict.length;i++)
         {
             set.add(dict[i]);
         }
@@ -95,15 +95,20 @@ public class Solution {
 
         dp[0] = true;
 
-        for(int i = 1;i<=s.length();i++)
+        for (int i = 1;i<=s.length();i++)
         {
+            if (set.contains(s.substring(0,i))) {
+                dp[i] = true;
+                continue;
+            }
             //traverse the string
-            for(int j = 1;j<=i;j++)
+            for (int j = 0;j<i;j++)
             {
-                if(dp[j-1] && set.contains(s.substring(j-1,i)))
+                if (dp[j] && set.contains(s.substring(j,i)))
                 {
                     //发现substring 从j-1 到 i 存在字典里，就需要判断这个substring之前的是不是已经是配对好的 那就检查 dp[j-1]
                     dp[i] = true;
+                    break;
                 }
             }
         }
