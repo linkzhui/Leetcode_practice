@@ -60,8 +60,3 @@ public class Solution {
         }
     }
 }
-
-
-class solution_2{
-
-}

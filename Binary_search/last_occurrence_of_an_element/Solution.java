@@ -35,7 +35,7 @@ public class Solution {
         {
             return right;
         }
-        if(target==array[left])
+        else if(target==array[left])
         {
             return left;
         }
@@ -72,7 +72,7 @@ public class Solution {
         {
             return left;
         }
-        if(target==array[right])
+        else if(target==array[right])
         {
             return right;
         }

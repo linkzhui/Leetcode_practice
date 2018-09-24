@@ -10,7 +10,7 @@ public class Solution {
 
     int max_cut_1(String s) {
         //dp solution 1
-        //int[] dp: represents the min cut to form a palindrome string from index 0 to i;
+        //int[] dp: represents the min cut to form a palindrome string from size 0 to i;
         //左大段 + 右小段 （manual check if the substring is palindrome or not）
 
         //time complexity: O(n^3)

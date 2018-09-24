@@ -12,29 +12,29 @@ public class Solution {
         {
             return null;
         }
-        int max = Integer.MIN_VALUE;
+        int[] max = new int[1];
+        max[0] = Integer.MIN_VALUE;
          return(helper(root,max));
     }
 
-    private Integer helper(TreeNode root,int max)
+    private Integer helper(TreeNode root,int[] max)
     {
-        if(root == null)
-        {
-            return 0;
+        if (root == null) {
+            return null;
         }
-
-        int left_child = helper(root.left,max);
-        int right_child = helper(root.right,max);
-        if(root.left!=null && root.right!=null)
+        Integer left_child = helper(root.left, max);
+        Integer right_child = helper(root.right, max);
+        int cur_max;
+        if (left_child == null && right_child == null)
         {
-            //if the root is full node, there must exist a path from one leaf
-            //to another leaf node
-            max = Math.max(max,root.val+left_child+right_child);
-            return Math.max(left_child,right_child)+root.val;
+            //reach the left node
+            cur_max = root.val;
+        } else if (left_child == null || right_child == null) {
+            cur_max = left_child != null? left_child : right_child;
+        } else{
+            cur_max = Math.max(left_child, right_child);
         }
-
-        //node is not a full node
-        return root.left!=null? right_child+root.val:left_child+root.val;
-
+        max[0] = Math.max(max[0],cur_max);
+        return cur_max;
     }
 }

@@ -13,6 +13,8 @@ public class Solution {
         }
 
         Map<Integer,pair> map = new HashMap<>();
+        //第一个pair的右边界要小于第二个pair sum的做边界
+        //这里为什么先j再i，是因为要确保之前的pair_sum的右边界比以后的pair_sum右边界要小
         for(int j = 1; j<array.length;j++)
         {
             //the right index
