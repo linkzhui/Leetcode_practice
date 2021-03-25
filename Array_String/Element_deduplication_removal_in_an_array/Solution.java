@@ -1,4 +1,4 @@
-package Google.Line.Element_deduplication_removal_in_an_array;
+package Google.Array_String.Element_deduplication_removal_in_an_array;
 
 //Question 1.1: 给定一个排好序的数组，消除里面重复的元素，对于重复元素只保留一个怎么做
 //return the length of new array
@@ -152,6 +152,14 @@ class Solution_3{
     //fast: current index;
     //begin: represent how many repeated character is meeted after meet a new character.
     //slow: represents to the left side of the slow (ex-cluding the slow) will be the final result
+    public static void main(String[] args) {
+        Solution_3 sol = new Solution_3();
+        int[] array = {1,1,1,1,2,3,4};
+        int i = sol.Q1_3_method1(array);
+        for (int j = 0; j < i; j++) {
+            System.out.print(array[j]);
+        }
+    }
     int Q1_3_method1(int[] array)
     {
         int slow = 0;
@@ -164,7 +172,7 @@ class Solution_3{
         while(fast<array.length)
         {
             int begin = fast;
-            while(array[fast]==array[begin])
+            while(fast<array.length && array[fast]==array[begin])
             {
                 fast++;
             }

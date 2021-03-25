@@ -1,4 +1,4 @@
-package Google.Array_String.Candy;
+package Google.Array_String.Leetcode_135_Candy;
 
 //Solution 1: use one extra array, to scan the ratings from left to right, then scan right to left again
 
@@ -61,6 +61,7 @@ public class Solution {
         for (int i = 1; i < ratings.length; i++) {
             int cur_slope = (ratings[i] > ratings[i - 1]) ? 1 : (ratings[i] < ratings[i - 1] ? -1 : 0);
             if ((old_slope > 0 && cur_slope == 0) || (old_slope < 0 && cur_slope >= 0)) {
+                //如果发现一个小孩的rating和pre的rating一样,那么第二个rating就是新的开始的点
                 candies += count(up) + count(down) + Math.max(up, down);
                 up = 0;
                 down = 0;
@@ -76,5 +77,34 @@ public class Solution {
         }
         candies += count(up) + count(down) + Math.max(up, down) + 1;
         return candies;
+    }
+
+    public int candy(int[] ratings) {
+        if (ratings == null || ratings.length ==0) {
+            return 0;
+        }
+        int up = 0;
+        int down = 0;
+        int candy = 1;
+        int old_slope = 0;
+        for (int i = 1; i < ratings.length; i++) {
+            int cur_slope = ratings[i] > ratings[i-1]? 1 : (ratings[i] < ratings[i-1]? -1 : 0);
+            if ((cur_slope == 0 && old_slope == 1) || (cur_slope >= 0 && old_slope < 0)) {
+                candy += count(up) + count(down) + Math.max(up, down);
+                up = 0;
+                down = 0;
+            }
+            if (cur_slope > 0) {
+                up++;
+            }
+            else if (cur_slope < 0) {
+                down++;
+            } else {
+                candy++;
+            }
+            old_slope = cur_slope;
+        }
+        candy += count(up) + count(down) + Math.max(up,down);
+        return candy;
     }
 }

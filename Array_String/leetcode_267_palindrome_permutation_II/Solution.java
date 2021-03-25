@@ -1,4 +1,4 @@
-package Google.Line.leetcode_267_palindrome_permutation_II;
+package Google.Array_String.leetcode_267_palindrome_permutation_II;
 
 
 import java.util.*;
